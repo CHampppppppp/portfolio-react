@@ -8,7 +8,7 @@ const MotorModelContainer = () => {
     <Canvas>
       <Suspense fallback={null}>
         {/* 环境贴图 */}
-        <Stage environment="night" intensity={0.3}>
+        <Stage environment="city" intensity={2}>
           <MotorModel/>
         </Stage>
         <OrbitControls enableZoom={false} autoRotate={true} autoRotateSpeed={0.6}/>
