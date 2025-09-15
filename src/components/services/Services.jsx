@@ -59,7 +59,7 @@ const services = [
 const Services = () => {
   const [currentServiceId, setCurrentServiceId] = useState(1)
   const ref = useRef()
-  const isInView = useInView(ref, {margin:"-100px"})
+  const isInView = useInView(ref)
 
   return (
     <div className='services' ref={ref}>
