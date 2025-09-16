@@ -34,3 +34,51 @@ section{
     scroll-snap-align: center;
     height:100vh;
 }
+
+/* 响应式容器padding */
+@media (max-width: 1536px){
+    .container{
+        padding-left: 96px;
+        padding-right: 96px;
+    }
+}
+
+@media (max-width: 1268px){
+    .container{
+        padding-left: 64px;
+        padding-right: 64px;
+    }
+}
+
+@media (max-width: 1068px){
+    .container{
+        padding-left: 48px;
+        padding-right: 48px;
+    }
+}
+
+@media (max-width: 998px){
+    .container{
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+}
+
+@media (max-width: 768px){
+    .container{
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+    
+    section{
+        height: auto;
+        min-height: 100vh;
+    }
+}
+
+@media (max-width: 480px){
+    .container{
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}

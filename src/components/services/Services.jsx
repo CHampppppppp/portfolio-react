@@ -58,10 +58,10 @@ const services = [
 const Services = () => {
   const [currentServiceId, setCurrentServiceId] = useState(1)
   const ref = useRef()
-  const isInView = useInView(ref)
+  const isInView = useInView(ref,{margin:"-200px"})
 
   return (
-    <div className='services' ref={ref}>
+    <div className='services' id='services' ref={ref}>
       <div className='sSection left'>
         <motion.h1 className='sTitle' variants={textVariants} initial="initial" animate={isInView?"animate":"initial"} >我能做什么？</motion.h1>
         <motion.div className="serviceList" variants={listVariants} initial="initial" animate={isInView?"animate":"initial"}>  

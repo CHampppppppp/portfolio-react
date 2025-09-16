@@ -54,10 +54,10 @@ const Contact = () => {
       );
   };
 
-  const isInView = useInView(ref)
+  const isInView = useInView(ref,{margin:"-200px"})
 
   return (
-    <div className='contact' ref={ref}>
+    <div className='contact' id='contact' ref={ref}>
       <div className="cSection">
         <motion.form variants={listVariant} animate={isInView?'animate':'initial'} ref={form} onSubmit={sendEmail}>
           <motion.h1 variants={listVariant} className="cTitle">联系我~</motion.h1>

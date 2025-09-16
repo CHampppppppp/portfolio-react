@@ -1,9 +1,9 @@
 import Shape from './Shape.jsx'
 import './hero.css'
 import Speech from './Speech.jsx'
-import { motion, stagger } from 'motion/react'
+import { motion, useInView } from 'motion/react'
 import { Canvas } from '@react-three/fiber';
-import { Suspense } from 'react';
+import { Suspense, useRef } from 'react';
 
 const awardVariants={
   initial:{
@@ -38,8 +38,10 @@ const followVariants={
 
 
 const Hero = () => {
+  const ref = useRef()
+  const isInView = useInView(ref, { margin: "-200px" })
   return (
-    <div className='hero'>
+    <div className='hero' id='hero' ref={ref}>
       {/* 左侧 */}
       <div className='hSection left'>
         {/* 标题 */}
@@ -54,7 +56,7 @@ const Hero = () => {
           <span>我叫Champ!</span>
         </motion.h1>
         {/* Awards */}
-        <motion.div variants={awardVariants} initial="initial" animate="animate" className='awards'>
+        <motion.div variants={awardVariants} animate={isInView ? "animate" : "initial"} className='awards'>
           <motion.h2 variants={awardVariants}>全栈程序猿</motion.h2>
           <motion.p variants={awardVariants}>这是一句很装逼很有深度的话</motion.p>
           <motion.div variants={awardVariants} className='awardList'>
@@ -64,7 +66,7 @@ const Hero = () => {
           </motion.div>
         </motion.div>
         {/* 按钮 */}
-        <motion.a animate={{ y:[0,5], opacity:[0,1,0] }} transition={{repeat:Infinity, duration:4, ease:"easeInOut" }} href='#services' className='scroll'>
+        <motion.a animate={isInView ? { y:[0,5], opacity:[0,1,0] } : "initial"} transition={{repeat:Infinity, duration:4, ease:"easeInOut" }} href='#services' className='scroll'>
           <svg
             width="50px"
             height="50px"
@@ -96,7 +98,7 @@ const Hero = () => {
       {/* 右侧 */}
       <div className='hSection right'>
         {/* 关注 */}
-        <motion.div variants={followVariants} initial="initial" animate="animate" className='follow'>
+        <motion.div variants={followVariants} animate={isInView ? "animate" : "initial"} className='follow'>
           <motion.a variants={followVariants} href="/">
             <img src="/instagram.png" alt="" />
           </motion.a>
@@ -115,7 +117,7 @@ const Hero = () => {
         <Speech />
 
         {/* 认证 */}
-        <motion.div aniamte={{opacity:[0,1]}} transition={{duration:1}} className='certificate'>
+        <motion.div animate={isInView ? {opacity:[0,1]} : "initial"} transition={{duration:1}} className='certificate'>
           <img src="/certificate.png" alt="" />
           LMAO CERTIFICATED
           <br />
@@ -126,7 +128,7 @@ const Hero = () => {
 
         {/* 联系 */}
         <motion.a href="/#contact" className='contactLink'
-        animate={{x:[200,0], opacity:[0,1]}}
+        animate={isInView ? {x:[200,0], opacity:[0,1]} : "initial"}
         transition={{duration:2}}
         >
           <motion.div className="contactButton" animate={{rotate: [0,360]}} 
@@ -168,9 +170,9 @@ const Hero = () => {
             <Shape />
           </Suspense> 
         </Canvas>
-        <div className='hImg'>
+        <motion.div animate={isInView ? {scale:1,transition:{duration:1}} : {scale:0.8}} className='hImg'>
           <img src="/hero.png" alt="" />
-        </div>
+        </motion.div>
       </div>
     </div>
 
