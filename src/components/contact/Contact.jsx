@@ -78,7 +78,9 @@ const Contact = () => {
           {error && <span>发送失败</span>}
         </motion.form>
       </div>
-      <div className="cSection">SVG</div>
+      <div className="cSection">
+        <ContactSvg />
+      </div>
     </div>
   )
 }

@@ -1,4 +1,3 @@
-import { transition } from 'three/examples/jsm/tsl/display/TransitionNode.js'
 import Counter from './Counter'
 import MacbookModelContainer from './macbook/MacbookModelContainer'
 import MotorModelContainer from './motor/MotorContainer'
@@ -23,7 +22,7 @@ const textVariants={
 
 const listVariants={
   initial:{
-    x:20,
+    x:50,
     opacity:0,
   },
   animate:{
